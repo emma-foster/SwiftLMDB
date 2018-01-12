@@ -1,8 +1,17 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "SwiftLMDB",
+    products: [
+        .library(name: "SwiftLMDB", targets: ["SwiftLMDB"]),
+    ],
     dependencies: [
-      .Package(url: "https://github.com/agisboye/CLMDB.git", majorVersion: 0, minor: 1),
+        .package(url: "https://github.com/jernejstrasner/CLMDB.git", from: "0.1.2"),
+    ],
+    targets: [
+        .target(name: "SwiftLMDB", dependencies: ["CLMDB"]),
+        .testTarget(name: "SwiftLMDBTests", dependencies: ["SwiftLMDB"]),
     ]
 )

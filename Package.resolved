@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "CLMDB",
-        "repositoryURL": "https://github.com/agisboye/CLMDB.git",
+        "repositoryURL": "https://github.com/jernejstrasner/CLMDB.git",
         "state": {
           "branch": null,
-          "revision": "56f73b27642b90c876803b5bc6c2ee468d865b67",
-          "version": "0.1.1"
+          "revision": "6ad4409b4f2416ad615cfb834ca594d38b8cfc8c",
+          "version": "0.1.2"
         }
       }
     ]
