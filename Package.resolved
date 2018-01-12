@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CLMDB",
+        "repositoryURL": "https://github.com/agisboye/CLMDB.git",
+        "state": {
+          "branch": null,
+          "revision": "56f73b27642b90c876803b5bc6c2ee468d865b67",
+          "version": "0.1.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
