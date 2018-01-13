@@ -8,13 +8,11 @@ This is a fork of [agisboye/SwiftLMDB](https://github.com/agisboye/SwiftLMDB) bu
 - [x] Fast
 - [x] Unit tested
 - [x] Xcode documentation
-- [x] Cross platform
-
-SwiftLMDB has been tested on iOS and macOS, however it should also run on Linux. Feel free to test it out.
+- [x] Cross platform (tests passing on macOS and Linux)
 
 ## Requirements
 
-- iOS 11.0+ or macOS 10.11+
+- iOS 11.0+, macOS 10.11+ or Linux
 - Swift 4.1
 
 ## Installation
