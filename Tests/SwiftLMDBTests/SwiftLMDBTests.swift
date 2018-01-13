@@ -89,8 +89,8 @@ class SwiftLMDBTests: XCTestCase {
         }
         
         // Put a value
-        let value = "Hello world!"
-        let key = "hv1"
+        let value = "Hello world!".data(using: .utf8)!
+        let key = "hv1".data(using: .utf8)!
         
         do {
             try database.put(value: value, forKey: key)
@@ -103,7 +103,7 @@ class SwiftLMDBTests: XCTestCase {
         do {
             
             let hasValue1 = try database.hasValue(forKey: key)
-            let hasValue2 = try database.hasValue(forKey: "hv2")
+            let hasValue2 = try database.hasValue(forKey: "hv2".data(using: .utf8)!)
             
             XCTAssertEqual(hasValue1, true, "A value has been set for this key. Result should be true.")
             XCTAssertEqual(hasValue2, false, "No value has been set for this key. Result should be false.")
@@ -129,8 +129,8 @@ class SwiftLMDBTests: XCTestCase {
         }
         
         // Put a value
-        let value = "Hello world!"
-        let key = "hv1"
+        let value = "Hello world!".data(using: .utf8)!
+        let key = "hv1".data(using: .utf8)!
         
         do {
             try database.put(value: value, forKey: key)
@@ -142,7 +142,7 @@ class SwiftLMDBTests: XCTestCase {
         // Get the value
         do {
             
-            let fetchedValue = try database.get(type: String.self, forKey: key)
+            let fetchedValue = try database.get(forKey: key)
             
             XCTAssertEqual(value, fetchedValue, "The returned value does not match the one that was set.")
             
@@ -171,7 +171,7 @@ class SwiftLMDBTests: XCTestCase {
         
         // Put a value
         do {
-            try database.put(value: "test", forKey: "")
+            try database.put(value: "test".data(using: .utf8)!, forKey: "".data(using: .utf8)!)
         } catch {
             
             return
@@ -179,46 +179,6 @@ class SwiftLMDBTests: XCTestCase {
         
         XCTFail("The put operation above is expected to fail.")
 
-    }
-    
-    func testPutGetDouble() {
-        
-        let environment: Environment
-        let database: Database
-        
-        do {
-            environment = try Environment(path: envPath, flags: [], maxDBs: 32)
-            database = try environment.openDatabase(named: "db1", flags: [.create])
-        } catch {
-            XCTFail(error.localizedDescription)
-            return
-        }
-        
-        // Put a value
-        let value: Double = 3.1415926536
-        let key = "float"
-        
-        do {
-            try database.put(value: value, forKey: key)
-        } catch {
-            XCTFail(error.localizedDescription)
-            return
-        }
-        
-        // Get the value
-        do {
-            guard let retrievedData = try database.get(type: Double.self, forKey: key) else {
-                XCTFail("No value was found for the key.")
-                return
-            }
-            
-            XCTAssertEqual(retrievedData, value, "The retrieved value is not the one that was set.")
-            
-        } catch {
-            XCTFail(error.localizedDescription)
-            return
-        }
-        
     }
     
     func testDelete() {
@@ -236,7 +196,7 @@ class SwiftLMDBTests: XCTestCase {
         
         // Put a value
         do {
-            try database.put(value: "Hello world!", forKey: "deleteTest")
+            try database.put(value: "Hello world!".data(using: .utf8)!, forKey: "deleteTest".data(using: .utf8)!)
         } catch {
             XCTFail(error.localizedDescription)
             return
@@ -244,7 +204,7 @@ class SwiftLMDBTests: XCTestCase {
         
         // Delete the value.
         do {
-            try database.deleteValue(forKey: "deleteTest")
+            try database.deleteValue(forKey: "deleteTest".data(using: .utf8)!)
         } catch {
             XCTFail(error.localizedDescription)
             return
@@ -252,7 +212,7 @@ class SwiftLMDBTests: XCTestCase {
         
         // Get the value
         do {
-            let retrievedData = try database.get(type: Data.self, forKey: "deleteTest")
+            let retrievedData = try database.get(forKey: "deleteTest".data(using: .utf8)!)
             
             XCTAssertNil(retrievedData, "Value still present after delete.")
 
@@ -330,7 +290,7 @@ class SwiftLMDBTests: XCTestCase {
         }
         
         // Put a value
-        let key = "test"
+        let key = "test".data(using: .utf8)!
         do {
             try database.put(value: "Hello world!".data(using: .utf8)!, forKey: key)
         } catch {
@@ -348,7 +308,7 @@ class SwiftLMDBTests: XCTestCase {
         
         // Get the value. We want the result to be nil, because the database was emptied.
         do {
-            let retrievedData = try database.get(type: Data.self, forKey: key)
+            let retrievedData = try database.get(forKey: key)
             
             XCTAssertNil(retrievedData, "Value still present after database being emptied.")
             
@@ -368,7 +328,6 @@ class SwiftLMDBTests: XCTestCase {
             ("testHasKey", testHasKey),
             ("testPutGetString", testPutGetString),
             ("testEmptyKey", testEmptyKey),
-            ("testPutGetDouble", testPutGetDouble),
             ("testDelete", testDelete),
             ("testDropDatabase", testDropDatabase),
             ("testEmptyDatabase", testEmptyDatabase),
