@@ -1,6 +1,6 @@
 # SwiftLMDB
 
-This is a fork of [agisboye/SwiftLMDB](https://github.com/agisboye/SwiftLMDB) but the functionality has been altered to better suit its purpose in an internal project.
+This is a fork of [agisboye/SwiftLMDB](https://github.com/agisboye/SwiftLMDB), updated for Swift 5.1.
 
 ## Features
 
@@ -13,7 +13,7 @@ This is a fork of [agisboye/SwiftLMDB](https://github.com/agisboye/SwiftLMDB) bu
 ## Requirements
 
 - iOS 11.0+, macOS 10.11+ or Linux
-- Swift 4.1
+- Swift 5.1
 
 ## Installation
 
