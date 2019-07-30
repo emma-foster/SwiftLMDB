@@ -20,14 +20,14 @@ This is a fork of [agisboye/SwiftLMDB](https://github.com/agisboye/SwiftLMDB), u
 ### Swift Package Manager
 
 ```swift
-// swift-tools-version:4.0
+// swift-tools-version:5.1
 
 import PackageDescription
 
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/jernejstrasner/SwiftLMDB.git", .branch("master"))
+        .package(url: "https://github.com/emma-foster/SwiftLMDB.git", from: "1.1.2")
     ],
     ...
 )
